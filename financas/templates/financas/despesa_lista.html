@@ -1,0 +1,26 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>Despesas</h2>
+<a href="{% url 'despesa_nova' %}" class="botao">+ Nova despesa</a>
+
+<table>
+    <tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Conta</th><th>Valor</th><th>Pago?</th><th>Ações</th></tr>
+    {% for despesa in despesas %}
+    <tr>
+        <td>{{ despesa.data|date:"d/m/Y" }}</td>
+        <td>{{ despesa.descricao }}</td>
+        <td>{{ despesa.categoria }}</td>
+        <td>{{ despesa.conta }}</td>
+        <td class="negativo">R$ {{ despesa.valor }}</td>
+        <td>{% if despesa.pago %}Sim{% else %}Não{% endif %}</td>
+        <td>
+            <a href="{% url 'despesa_editar' despesa.id %}">Editar</a>
+            <a href="{% url 'despesa_excluir' despesa.id %}" class="link-excluir">Excluir</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">Nenhuma despesa cadastrada.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

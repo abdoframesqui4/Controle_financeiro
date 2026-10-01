@@ -1,0 +1,160 @@
+/* ===== Estilo geral ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 16px;
+}
+
+/* ===== Cabeçalho e menu ===== */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Cartões do resumo ===== */
+.cartoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.cartao {
+    flex: 1;
+    min-width: 180px;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+}
+
+.cartao p {
+    margin: 0 0 5px 0;
+}
+
+.cartao strong {
+    font-size: 22px;
+}
+
+.verde { background-color: #27ae60; }
+.vermelho { background-color: #c0392b; }
+.azul { background-color: #2980b9; }
+
+/* ===== Tabelas ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin: 15px 0 25px 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #ecf0f1;
+}
+
+.positivo { color: #27ae60; }
+.negativo { color: #c0392b; }
+
+td a {
+    margin-right: 10px;
+    color: #2980b9;
+}
+
+td a.link-excluir {
+    color: #c0392b;
+}
+
+/* ===== Botões ===== */
+.botao {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.botao:hover { opacity: 0.85; }
+.botao.cinza { background-color: #7f8c8d; }
+.botao.vermelho { background-color: #c0392b; }
+
+/* ===== Formulários ===== */
+.formulario {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.formulario input,
+.formulario select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formulario input[type="checkbox"] {
+    width: auto;
+}
+
+.erro {
+    background-color: #fdecea;
+    color: #c0392b;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ===== Barra de progresso das metas ===== */
+.meta p {
+    margin: 10px 0 5px 0;
+}
+
+.barra {
+    background-color: #ddd;
+    border-radius: 5px;
+    height: 15px;
+}
+
+.progresso {
+    background-color: #27ae60;
+    height: 100%;
+    border-radius: 5px;
+}

@@ -1,0 +1,22 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>Categorias</h2>
+<a href="{% url 'categoria_nova' %}" class="botao">+ Nova categoria</a>
+
+<table>
+    <tr><th>Nome</th><th>Tipo</th><th>Ações</th></tr>
+    {% for categoria in categorias %}
+    <tr>
+        <td>{{ categoria.nome }}</td>
+        <td>{{ categoria.get_tipo_display }}</td>
+        <td>
+            <a href="{% url 'categoria_editar' categoria.id %}">Editar</a>
+            <a href="{% url 'categoria_excluir' categoria.id %}" class="link-excluir">Excluir</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">Nenhuma categoria cadastrada.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

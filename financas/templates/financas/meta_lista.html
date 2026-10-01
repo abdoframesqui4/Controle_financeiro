@@ -1,0 +1,25 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>Metas de economia</h2>
+<a href="{% url 'meta_nova' %}" class="botao">+ Nova meta</a>
+
+<table>
+    <tr><th>Nome</th><th>Objetivo</th><th>Guardado</th><th>Progresso</th><th>Prazo</th><th>Ações</th></tr>
+    {% for meta in metas %}
+    <tr>
+        <td>{{ meta.nome }}</td>
+        <td>R$ {{ meta.valor_objetivo }}</td>
+        <td>R$ {{ meta.valor_guardado }}</td>
+        <td>{{ meta.porcentagem }}%</td>
+        <td>{{ meta.prazo|date:"d/m/Y" }}</td>
+        <td>
+            <a href="{% url 'meta_editar' meta.id %}">Editar</a>
+            <a href="{% url 'meta_excluir' meta.id %}" class="link-excluir">Excluir</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6">Nenhuma meta cadastrada.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro</title>
+    <link rel="stylesheet" href="{% static 'financas/estilo.css' %}">
+</head>
+<body>
+    <header>
+        <h1>💰 Controle Financeiro</h1>
+        <nav>
+            <a href="{% url 'inicio' %}">Início</a>
+            <a href="{% url 'receita_lista' %}">Receitas</a>
+            <a href="{% url 'despesa_lista' %}">Despesas</a>
+            <a href="{% url 'conta_lista' %}">Contas</a>
+            <a href="{% url 'categoria_lista' %}">Categorias</a>
+            <a href="{% url 'meta_lista' %}">Metas</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+</body>
+</html>

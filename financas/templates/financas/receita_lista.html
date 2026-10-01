@@ -1,0 +1,25 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>Receitas</h2>
+<a href="{% url 'receita_nova' %}" class="botao">+ Nova receita</a>
+
+<table>
+    <tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Conta</th><th>Valor</th><th>Ações</th></tr>
+    {% for receita in receitas %}
+    <tr>
+        <td>{{ receita.data|date:"d/m/Y" }}</td>
+        <td>{{ receita.descricao }}</td>
+        <td>{{ receita.categoria }}</td>
+        <td>{{ receita.conta }}</td>
+        <td class="positivo">R$ {{ receita.valor }}</td>
+        <td>
+            <a href="{% url 'receita_editar' receita.id %}">Editar</a>
+            <a href="{% url 'receita_excluir' receita.id %}" class="link-excluir">Excluir</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6">Nenhuma receita cadastrada.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

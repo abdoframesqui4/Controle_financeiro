@@ -1,0 +1,58 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>Resumo</h2>
+
+<div class="cartoes">
+    <div class="cartao verde">
+        <p>Receitas</p>
+        <strong>R$ {{ total_receitas }}</strong>
+    </div>
+    <div class="cartao vermelho">
+        <p>Despesas</p>
+        <strong>R$ {{ total_despesas }}</strong>
+    </div>
+    <div class="cartao azul">
+        <p>Saldo</p>
+        <strong>R$ {{ saldo }}</strong>
+    </div>
+</div>
+
+<h2>Saldo por conta</h2>
+<table>
+    <tr><th>Conta</th><th>Banco</th><th>Saldo atual</th></tr>
+    {% for conta in contas %}
+    <tr>
+        <td>{{ conta.nome }}</td>
+        <td>{{ conta.banco }}</td>
+        <td>R$ {{ conta.saldo_atual }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">Nenhuma conta cadastrada.</td></tr>
+    {% endfor %}
+</table>
+
+<h2>Últimas despesas</h2>
+<table>
+    <tr><th>Data</th><th>Descrição</th><th>Valor</th></tr>
+    {% for despesa in ultimas_despesas %}
+    <tr>
+        <td>{{ despesa.data|date:"d/m/Y" }}</td>
+        <td>{{ despesa.descricao }}</td>
+        <td class="negativo">R$ {{ despesa.valor }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">Nenhuma despesa cadastrada.</td></tr>
+    {% endfor %}
+</table>
+
+<h2>Metas</h2>
+{% for meta in metas %}
+<div class="meta">
+    <p>{{ meta.nome }} — R$ {{ meta.valor_guardado }} de R$ {{ meta.valor_objetivo }}</p>
+    <div class="barra"><div class="progresso" style="width: {{ meta.porcentagem }}%"></div></div>
+</div>
+{% empty %}
+<p>Nenhuma meta cadastrada.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>Contas</h2>
+<a href="{% url 'conta_nova' %}" class="botao">+ Nova conta</a>
+
+<table>
+    <tr><th>Nome</th><th>Banco</th><th>Saldo inicial</th><th>Saldo atual</th><th>Ações</th></tr>
+    {% for conta in contas %}
+    <tr>
+        <td>{{ conta.nome }}</td>
+        <td>{{ conta.banco }}</td>
+        <td>R$ {{ conta.saldo_inicial }}</td>
+        <td>R$ {{ conta.saldo_atual }}</td>
+        <td>
+            <a href="{% url 'conta_editar' conta.id %}">Editar</a>
+            <a href="{% url 'conta_excluir' conta.id %}" class="link-excluir">Excluir</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">Nenhuma conta cadastrada.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

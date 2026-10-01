@@ -1,0 +1,12 @@
+{% extends 'financas/base.html' %}
+
+{% block conteudo %}
+<h2>{{ titulo }}</h2>
+
+<form method="post" class="formulario">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="botao">Salvar</button>
+    <a href="{% url voltar_para %}" class="botao cinza">Cancelar</a>
+</form>
+{% endblock %}
